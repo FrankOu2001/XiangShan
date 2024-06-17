@@ -769,7 +769,7 @@ class Tage(implicit p: Parameters) extends BaseTage {
     bUpdateTakens(i) := updateTaken
 
     val needToAllocate = hasUpdate && updateMispred && !(updateUseAlt && updateProviderCorrect && updateProvided)
-    val allocatableMask = updateMeta.allocates(i)
+    val allocatableMask = updateMeta.allocates(i) // 可分配表项, updateMeta来自预测产生的resp_meta
     val canAllocate = updateMeta.allocateValid(i)
 
     val allocLFSR = random.LFSR(width = 15)(TageNTables - 1, 0)
